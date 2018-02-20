@@ -14,30 +14,30 @@
           </div>
           <div class="modal-body">
 
-            {!! Form::open(['route'=>'verbs.store','method','POST']) !!}
+            {!! Form::open() !!}
             <div class="form-group">
               {!! Form::label('verb','Verbo')!!}
-              {!! Form::text('verb',null,['class'=>'form-control','placeholder'=>'Verb','required'])!!}
+              {!! Form::text('verb',null,['class'=>'form-control','placeholder'=>'Verb','required','id'=>'verbA'])!!}
             </div>
             <div class="form-group">
               {!! Form::label('present','Present')!!}
-              {!! Form::text('present',null,['class'=>'form-control','placeholder'=>'Present','required'])!!}
+              {!! Form::text('present',null,['class'=>'form-control','placeholder'=>'Present','required','id'=>'presentA'])!!}
             </div>
             <div class="form-group">
               {!! Form::label('gerund','Gerundio')!!}
-              {!! Form::text('gerund',null,['class'=>'form-control','placeholder'=>'Gerund','required'])!!}
+              {!! Form::text('gerund',null,['class'=>'form-control','placeholder'=>'Gerund','required','id'=>'gerundA'])!!}
             </div>
             <div class="form-group">
               {!! Form::label('past','Past')!!}
-              {!! Form::text('past',null,['class'=>'form-control','placeholder'=>'Past','required'])!!}
+              {!! Form::text('past',null,['class'=>'form-control','placeholder'=>'Past','required','id'=>'pastA'])!!}
             </div>
             <div class="form-group">
               {!! Form::label('participle','Participle')!!}
-              {!! Form::text('participle',null,['class'=>'form-control','placeholder'=>'Participle','required'])!!}
+              {!! Form::text('participle',null,['class'=>'form-control','placeholder'=>'Participle','required','id'=>'participleA'])!!}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              {!! Form::submit('Guardar',['class'=>'btn btn-primary','id'=>'boton'])!!}
+              <button type="button" class="btn btn-success" onclick="guardar()" id="botonGuardar">Guardar</button>
             </div>
             {!! Form::close()!!}
           </div>
@@ -50,17 +50,7 @@
 
 
   <table class="table table-striped" id='tabla' name='tabla'>
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Verb</th>
-      <th scope="col">Present</th>
-      <th scope="col">Gerund</th>
-      <th scope="col">Past</th>
-      <th scope="col">Participle</th>
-      <th scope="col">Accion</th>
-    </tr>
-  </thead>
+
   <tbody>
 
   </tbody>
@@ -127,6 +117,39 @@
   $.ajaxSetup({
   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
 });
+  function guardar(){
+    var verbA=$('#verbA').val();
+    var presentA=$('#presentA').val();
+    var gerundA=$('#gerundA').val();
+    var pastA=$('#pastA').val();
+    var participleA=$('#participleA').val();
+    var ruta="{{route('verbs.store')}}";
+    $.ajax({
+      type:'POST',
+      url:ruta,
+      data:{
+        verb:verbA,
+        present:presentA,
+        gerund:gerundA,
+        past:pastA,
+        participle:participleA
+      },
+      dataType:'json',
+      success:function(res){
+        if(res.status==0){
+          $('#exampleModal').modal('hide');
+          console.log('error');
+        }else{
+          listar();
+          $('#exampleModal').modal('hide');
+          console.log('exito');
+        }
+      },
+      error: function(e){
+        console.log(e);
+      }
+    });
+  }
   function getDatos(boton){
     var valor=boton.value;
     console.log("boton: "+valor);
@@ -218,19 +241,16 @@
     });
 
   }
-
   function listar(){
-
     var tablaDatos=$('#tabla');
     var ruta="{{route('verb.listar')}}";
     $('#tabla').empty();
     $.get(ruta,function(res){
+      tablaDatos.append("<thead><tr><th scope='col'>ID</th><th scope='col'>Verb</th><th scope='col'>Present</th><th scope='col'>Gerund</th><th scope='col'>Past</th><th scope='col'>Participle</th><th scope='col'>Accion</th></tr></thead>");
       $(res).each(function(key,value){
           console.log(value);
         tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.present+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' onclick='modalBorrar(this)' name="+value.verb+" value="+value.id+" ></button></td></tr>");
       })
-
-
     });
 
   }

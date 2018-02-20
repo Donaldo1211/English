@@ -85,13 +85,13 @@ class VerbsController extends Controller
           $existe=true;
         }
         if($existe){
-          Alert::error($respuesta, 'Error')->persistent("Aceptar");
-          return redirect()->route('verbs.index');
+          $data=['status'=>'0'];
+          return  $data;
         }else{
+          $data=['status'=>'1'];
           $verb= new Verb($request->all());
           $verb->save();
-          Alert::success('Se ha guardado correctamente', 'Exito!')->persistent("Aceptar");
-          return redirect()->route('verbs.index');
+          return  $data;
         }
     }
     public function getVerb(Request $request)
