@@ -85,7 +85,7 @@ class VerbsController extends Controller
           $existe=true;
         }
         if($existe){
-          $data=['status'=>'0'];
+          $data=['status'=>'0' , 'res'=>$respuesta];
           return  $data;
         }else{
           $data=['status'=>'1'];
@@ -173,12 +173,14 @@ class VerbsController extends Controller
          $existe=true;
        }
        if($existe){
-         return ['res'=>'error'];
+           $data=['status'=>'0' , 'res'=>$respuesta];
+           return $data;
        }else{
          $verb=Verb::find($request->id);
          $verb->fill($request->all());
          $verb->save();
-         return ['res'=>'succes'];;
+        $data=['status'=>'1'];
+        return $data;
        }
      }
     public function update(Request $request, $id)
