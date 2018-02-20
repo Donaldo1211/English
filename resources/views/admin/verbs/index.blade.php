@@ -109,12 +109,14 @@
               <h4 class="modal-title" id="tituloEliminar">Elminar Verb </h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
+          <input type="hidden" id='idVerboElminar' />
           <!-- Modal body -->
 
           <!-- Modal footer -->
           <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-              {!! Form::submit('Eliminar', ['class' => 'btn btn-success']) !!}
+              <button type="button" id="eliminarVerbo" value="" onclick='eliminar(this)' class="btn btn-succes">Elminar</button>
+
           </div>
       </div>
   </div>
@@ -149,6 +151,16 @@
         }
       });
   }
+  function modalBorrar(boton){
+    var verbo= boton.name;
+    var id=boton.value;
+    console.log("name: "+verbo+" id: "+id);
+    $('#modalEliminarVerb').modal('show');
+    $('#tituloEliminar').empty();
+    $('#tituloEliminar').append('Seguro que desea eliminar el verbo: '+verbo);
+    $('#modalEliminarVerb').modal('show');
+    $('#eliminarVerbo').val(id);
+  }
   function actualizar(){
     var idVerbo=$('#idVerbo').val();
     var verb=$('#verbo').val();
@@ -181,15 +193,32 @@
       });
   }
   function eliminar(boton){
-    console.log('eliminar');
     var valor=boton.value;
-    var verbo= boton.name;
+    var ruta="{{route('verb.eliminar')}}";
     console.log('verb: '+verbo+" id:"+valor);
-    $('#tituloEliminar').empty();
-    $('#tituloEliminar').append('Seguro que desea eliminar el verbo: '+verbo);
-    $('#modalEliminarVerb').modal('show');
+
+    $.ajax({
+      type:'POST',
+      url:ruta,
+      data:{id:valor},
+      dataType:'json',
+      success:function(res){
+          if(res.status==0){
+            $('#modalEliminarVerb').modal('hide');
+            console.log('error');
+          }else{
+            listar();
+            $('#modalEliminarVerb').modal('hide');
+            console.log('exito');
+          }
+      },
+      error:function(e){
+        console.log(e);
+      }
+    });
 
   }
+
   function listar(){
 
     var tablaDatos=$('#tabla');
@@ -198,7 +227,7 @@
     $.get(ruta,function(res){
       $(res).each(function(key,value){
           console.log(value);
-        tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.present+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' name="+value.verb+" value="+value.id+" onclick='eliminar(this)'></button></td></tr>");
+        tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.present+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' onclick='modalBorrar(this)' name="+value.verb+" value="+value.id+" ></button></td></tr>");
       })
 
 
@@ -208,7 +237,6 @@
   $(document).ready(function() {
     listar();
   });
-
 
 
   </script>

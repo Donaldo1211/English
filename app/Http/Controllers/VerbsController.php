@@ -24,6 +24,21 @@ class VerbsController extends Controller
         $verbs=Verb::orderBy('id','ASC')->get();
         return $verbs;
     }
+    public function eliminar(Request $request){
+        $verb=Verb::find($request->id)->delete();
+        if($verb){
+          $data=[
+              'status'=>'1',
+              'msg'=>'success'
+          ];
+      }else{
+          $data=[
+              'status'=>'0',
+              'msg'=>'fail'
+          ];
+      }
+        return $data;
+    }
     /**
      * Show the form for creating a new resource.
      *
