@@ -15,12 +15,17 @@
     </div>
 
     <div class="form-group">
+      {!! Form::label('gerund','Gerundio') !!}
+      {!! Form::text('gerund',null,['class'=>'form-control','placeholder'=>'Gerund Tense','required'])!!}
+    </div>
+
+    <div class="form-group">
       {!! Form::label('past','Pasado') !!}
       {!! Form::text('past',null,['class'=>'form-control','placeholder'=>'Past Tense','required'])!!}
     </div>
 
     <div class="form-group">
-      {!! Form::label('participle','Presente') !!}
+      {!! Form::label('participle','Participle') !!}
       {!! Form::text('participle',null,['class'=>'form-control','placeholder'=>'participle Tense','required'])!!}
     </div>
     <div class="form-group">

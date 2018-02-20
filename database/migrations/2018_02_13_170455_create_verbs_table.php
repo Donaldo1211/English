@@ -17,6 +17,7 @@ class CreateVerbsTable extends Migration
             $table->increments('id');
             $table->string('verb')->unique();
             $table->string('present')->unique();
+            $table->string('gerund')->unique();
             $table->string('past')->unique();
             $table->string('participle')->unique();
             $table->timestamps();

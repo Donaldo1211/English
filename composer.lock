@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b93774a30b45bcb1eb790e197b5ced3c",
+    "content-hash": "28077e8dae4d6495395485ac9c627be3",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -605,16 +605,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.5.1",
+            "version": "v5.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6"
+                "reference": "b79edc7acf574144c9811277286b4cafee8a07cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6",
-                "reference": "2f6dc39ab3655724a615fe8a652d8b7f04fc9ac6",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/b79edc7acf574144c9811277286b4cafee8a07cc",
+                "reference": "b79edc7acf574144c9811277286b4cafee8a07cc",
                 "shasum": ""
             },
             "require": {
@@ -632,6 +632,7 @@
             },
             "type": "library",
             "extra": {
+                "branch-alias": [],
                 "laravel": {
                     "providers": [
                         "Collective\\Html\\HtmlServiceProvider"
@@ -665,8 +666,8 @@
                 }
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
-            "homepage": "http://laravelcollective.com",
-            "time": "2017-08-31T14:46:03+00:00"
+            "homepage": "https://laravelcollective.com",
+            "time": "2018-02-12T14:19:55+00:00"
         },
         {
             "name": "league/flysystem",
@@ -2239,6 +2240,67 @@
             "time": "2017-11-27T11:13:29+00:00"
         },
         {
+            "name": "uxweb/sweet-alert",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/uxweb/sweet-alert.git",
+                "reference": "92519b916755d673f92343767edd06110b167d05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/uxweb/sweet-alert/zipball/92519b916755d673f92343767edd06110b167d05",
+                "reference": "92519b916755d673f92343767edd06110b167d05",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "^5.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "UxWeb\\SweetAlert\\SweetAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "Alert": "UxWeb\\SweetAlert\\SweetAlert"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "UxWeb\\SweetAlert\\": "src/SweetAlert/"
+                },
+                "files": [
+                    "src/SweetAlert/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Uziel Bueno",
+                    "email": "ux.webs@gmail.com"
+                }
+            ],
+            "description": "A simple PHP package to show Sweet Alerts with the Laravel Framework",
+            "keywords": [
+                "alert",
+                "laravel",
+                "notifier",
+                "sweet"
+            ],
+            "time": "2017-09-10T17:14:08+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
             "source": {
@@ -2866,16 +2928,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.7.4",
+            "version": "1.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "9f901e29c93dae4aa77c0bb161df4276f9c9a1be"
+                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/9f901e29c93dae4aa77c0bb161df4276f9c9a1be",
-                "reference": "9f901e29c93dae4aa77c0bb161df4276f9c9a1be",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/dfd6be44111a7c41c2e884a336cc4f461b3b2401",
+                "reference": "dfd6be44111a7c41c2e884a336cc4f461b3b2401",
                 "shasum": ""
             },
             "require": {
@@ -2925,7 +2987,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-02-11T18:49:29+00:00"
+            "time": "2018-02-19T10:16:54+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

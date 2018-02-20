@@ -11,6 +11,7 @@ class Verb extends Model
     public $fillable=[
       'verb',
       'present',
+      'gerund',
       'past',
       'participle'
     ];
