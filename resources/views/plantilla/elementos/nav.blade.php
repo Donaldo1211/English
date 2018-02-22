@@ -14,7 +14,7 @@
           <a class="nav-link" href="{{route('verbs.index')}}">Verbos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Jugar</a>
+          <a class="nav-link" href="{{route('jugar.index')}}">Jugar</a>
         </li>
 
         </ul>

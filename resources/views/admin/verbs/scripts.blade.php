@@ -151,7 +151,7 @@ function listar(){
   $.get(ruta,function(res){
     tablaDatos.append("<thead><tr><th scope='col'>ID</th><th scope='col'>Verb</th><th scope='col'>Present</th><th scope='col'>Gerund</th><th scope='col'>Past</th><th scope='col'>Participle</th><th scope='col'>Accion</th></tr></thead>");
     $(res).each(function(key,value){
-        console.log(value);
+      console.log(value);
       tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.present+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' onclick='modalBorrar(this)' name="+value.verb+" value="+value.id+" ></button></td></tr>");
     })
   });
