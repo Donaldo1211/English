@@ -23,3 +23,4 @@ Route::post('guardarVerbo','VerbsController@guardarVerbo')->name('verb.guardarVe
 Route::get('listar','VerbsController@listar')->name('verb.listar');
 Route::post('eliminar','VerbsController@eliminar')->name('verb.eliminar');
 Route::resource('jugar','JugarController');
+Route::post('iniciar','JugarController@inicar')->name('iniciar.juego');

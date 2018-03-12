@@ -10,12 +10,16 @@
         <h5 class="card-title">Selecciona el numero de verbos:</h5>
         <p class="card-text"></p>
         <div class="form-group">
-            {!!Form::open()!!}
+            {!!Form::open(['route'=>'iniciar.juego'])!!}
             {!!Form::label('Verbs', null, ['class' => 'control-label'])!!}
             {!!Form::number('num', null,(['class' => 'form-control','min'=>0,'max'=>10,'id'=>'num']))!!}
+            <div class="invalid-feedback">
+               Please choose a number of 10 length.
+            </div>
+            <button type="submit" class="btn btn-primary">Jugar</button>
             {!! Form::close() !!}
         </div>
-        <a href="#" class="btn btn-primary">Jugar</a>
+
       </div>
     </div>
   </div>
@@ -23,18 +27,25 @@
 @endsection
 @push('scripts')
   <script type="text/javascript">
-  $(function() {
-     maxVal = 10;
-     $('#num').keyup(function(){
-        var insertedVal = $(this).val();
-        console.log(insertedVal);
-        if (insertedVal.length < maxVal){
-            $(this).css({"color":"red","border":"1px solid red"});
-        }else{
-            $(this).css({"color":"green","border":"1px solid green"});
-        }
-     })
+
+  $('input').blur( function() {
+    $(this).css({"box-shadow":"0 0 0"});
   });
+    $(function() {
+       maxVal = 10;
+       $('#num').keyup(function(){
+          var insertedVal = $(this).val();
+          if (insertedVal.length < maxVal){
+              $(this).css({"box-shadow":"0 0 5px red","border-color":"red"});
+                $(".invalid-feedback").show();
+          }else{
+              $(this).css({"box-shadow":"0 0 5px green","border-color":"green"});
+              $(".invalid-feedback").hide();
+          }
+       })
+    });
+
+
 
   </script>
 @endpush

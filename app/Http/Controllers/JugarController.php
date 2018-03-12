@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Verb;
 
 class JugarController extends Controller
 {
@@ -14,6 +15,13 @@ class JugarController extends Controller
     public function index()
     {
         return view('juego.inicio');
+    }
+
+    public function inicar(Request $request)
+    {
+    
+        $verbos=Verb::inRandomOrder()->take($request->num)->get();
+        return view('juego.juego')->with('verbos',$verbos);
     }
 
     /**
