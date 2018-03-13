@@ -19,9 +19,8 @@ class JugarController extends Controller
 
     public function inicar(Request $request)
     {
-    
         $verbos=Verb::inRandomOrder()->take($request->num)->get();
-        return view('juego.juego')->with('verbos',$verbos);
+        return view('juego.juego')->with('verbos', $verbos);
     }
 
     /**

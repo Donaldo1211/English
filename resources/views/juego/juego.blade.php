@@ -38,38 +38,37 @@
 
 @endsection @push('scripts')
 <script type="text/javascript">
-  @foreach ($verbos as $verb)
+  @foreach($verbos as $verb)
   var x = Math.floor((Math.random() * 5) + 1);
   switch (x) {
     case 1:
-    tablaAntes="<tr><td>"+'{{$verb->id}}'+"</td><td>"+'{{$verb->verb}}'+"</td>";
-    tablaServicios=tablaAntes+"<td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
-    $('#tablaVerbs tr:last').after(tablaServicios);
+      tablaAntes = "<tr><td>" + '{{$verb->id}}' + "</td><td>" + '{{$verb->verb}}' + "</td>";
+      tablaServicios = tablaAntes + "<td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
+      $('#tablaVerbs tr:last').after(tablaServicios);
       break;
     case 2:
-    tablaAntes="<tr><td>"+'{{$verb->id}}'+"</td><td contenteditable='true'></td>";
-    tablaServicios=tablaAntes+"<td>"+'{{$verb->present}}'+"</td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
-    $('#tablaVerbs tr:last').after(tablaServicios);
+      tablaAntes = "<tr><td>" + '{{$verb->id}}' + "</td><td contenteditable='true'></td>";
+      tablaServicios = tablaAntes + "<td>" + '{{$verb->present}}' + "</td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
+      $('#tablaVerbs tr:last').after(tablaServicios);
       break;
     case 3:
-    tablaAntes="<tr><td>"+'{{$verb->id}}'+"</td><td contenteditable='true'></td>";
-    tablaServicios=tablaAntes+"<td contenteditable='true'></td><td>"+'{{$verb->gerund}}'+"</td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
-    $('#tablaVerbs tr:last').after(tablaServicios);
+      tablaAntes = "<tr><td>" + '{{$verb->id}}' + "</td><td contenteditable='true'></td>";
+      tablaServicios = tablaAntes + "<td contenteditable='true'></td><td>" + '{{$verb->gerund}}' + "</td><td contenteditable='true'></td><td contenteditable='true'></td></tr>";
+      $('#tablaVerbs tr:last').after(tablaServicios);
       break;
     case 4:
-    tablaAntes="<tr><td>"+'{{$verb->id}}'+"</td><td contenteditable='true'></td>";
-    tablaServicios=tablaAntes+"<td contenteditable='true'></td><td contenteditable='true'></td><td>"+'{{$verb->past}}'+"</td><td contenteditable='true'></td></tr>";
-    $('#tablaVerbs tr:last').after(tablaServicios);
+      tablaAntes = "<tr><td>" + '{{$verb->id}}' + "</td><td contenteditable='true'></td>";
+      tablaServicios = tablaAntes + "<td contenteditable='true'></td><td contenteditable='true'></td><td>" + '{{$verb->past}}' + "</td><td contenteditable='true'></td></tr>";
+      $('#tablaVerbs tr:last').after(tablaServicios);
       break;
     case 5:
-    tablaAntes="<tr><td>"+'{{$verb->id}}'+"</td><td contenteditable='true'></td>";
-    tablaServicios=tablaAntes+"<td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'>"+'{{$verb->participle}}'+"</td></tr>";
-    $('#tablaVerbs tr:last').after(tablaServicios);
+      tablaAntes = "<tr><td>" + '{{$verb->id}}' + "</td><td contenteditable='true'></td>";
+      tablaServicios = tablaAntes + "<td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'>" + '{{$verb->participle}}' + "</td></tr>";
+      $('#tablaVerbs tr:last').after(tablaServicios);
       break;
-      
+
     default:
   }
-    @endforeach
-
+  @endforeach
 </script>
 @endpush
