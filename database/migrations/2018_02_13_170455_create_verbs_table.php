@@ -16,10 +16,9 @@ class CreateVerbsTable extends Migration
         Schema::create('verbs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('verb')->unique();
-            $table->string('present')->unique();
-            $table->string('gerund')->unique();
             $table->string('past')->unique();
             $table->string('participle')->unique();
+            $table->string('gerund')->unique();
             $table->string('meaning');
             $table->timestamps();
         });
