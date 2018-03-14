@@ -29,6 +29,10 @@
       {!! Form::text('participle',null,['class'=>'form-control','placeholder'=>'participle Tense','required'])!!}
     </div>
     <div class="form-group">
+      {!! Form::label('meaning','Meaning') !!}
+      {!! Form::text('meaning',null,['class'=>'form-control','placeholder'=>'participle Tense','required'])!!}
+    </div>
+    <div class="form-group">
       {!! Form::submit('Guardar',['class'=>'btn btn-primary']) !!}
     </div>
 

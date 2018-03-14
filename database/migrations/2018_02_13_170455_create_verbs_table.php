@@ -20,6 +20,7 @@ class CreateVerbsTable extends Migration
             $table->string('gerund')->unique();
             $table->string('past')->unique();
             $table->string('participle')->unique();
+            $table->string('meaning');
             $table->timestamps();
         });
     }

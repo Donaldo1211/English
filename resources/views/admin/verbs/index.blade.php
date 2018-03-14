@@ -35,6 +35,10 @@
               {!! Form::label('participle','Participle')!!}
               {!! Form::text('participle',null,['class'=>'form-control','placeholder'=>'Participle','required','id'=>'participleA'])!!}
             </div>
+            <div class="form-group">
+              {!! Form::label('meaning','Meaning')!!}
+              {!! Form::text('meaning',null,['class'=>'form-control','placeholder'=>'Participle','required','id'=>'meaningA'])!!}
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               <button type="button" class="btn btn-success" onclick="guardar()" id="botonGuardar">Guardar</button>
@@ -80,6 +84,8 @@
                   {!! Form::text('past', null, ['class' => 'form-control', 'required','id'=>'pasado']) !!}
                   {!! Form::label('participle', 'Participle:') !!}
                   {!! Form::text('participle', null, ['class' => 'form-control', 'required','id'=>'participio']) !!}
+                  {!! Form::label('meaning', 'Meaning:') !!}
+                  {!! Form::text('meaning', null, ['class' => 'form-control', 'required','id'=>'significado']) !!}
               </div>
           </div>
           <!-- Modal footer -->

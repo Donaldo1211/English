@@ -13,6 +13,7 @@ class Verb extends Model
       'present',
       'gerund',
       'past',
-      'participle'
+      'participle',
+      'meaning'
     ];
 }

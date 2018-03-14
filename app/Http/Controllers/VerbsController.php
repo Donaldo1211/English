@@ -16,7 +16,7 @@ class VerbsController extends Controller
      */
     public function index()
     {
-        //$verbs=Verb::orderBy('id','ASC')->paginate(6);
+        $verbs=Verb::orderBy('id','ASC')->paginate(6);
         return view('admin.verbs.index');
 
     }
@@ -62,6 +62,7 @@ class VerbsController extends Controller
         $verbGerund=Verb::where('gerund','=',$request->gerund)->get();
         $verbPast=Verb::where('past','=',$request->past)->get();
         $verbParticiple=Verb::where('participle','=',$request->participle)->get();
+        $verbMeaning=Verb::where('meaning','=',$request->meaning)->get();
         $respuesta="";
         $existe=false;
         if(count($verb)>0){
@@ -84,6 +85,11 @@ class VerbsController extends Controller
           $respuesta.="Verb ".$request->participle." ya existe \n";
           $existe=true;
         }
+        if(count($verbMeaning)>0){
+          $respuesta.="Verb ".$request->meaning." ya existe \n";
+          $existe=true;
+        }
+
         if($existe){
           $data=['status'=>'0' , 'res'=>$respuesta];
           return  $data;
@@ -150,6 +156,7 @@ class VerbsController extends Controller
                        ->where('id','!=',$request->id)->get();
        $verbParticiple=Verb::where('participle','=',$request->participle)
                            ->where('id','!=',$request->id)->get();
+                           
        $respuesta="";
        $existe=false;
        if(count($verb)>0){
