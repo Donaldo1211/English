@@ -61,7 +61,6 @@
           console.log(res);
           $('#idVerbo').val(res[0]['id']);
           $('#verbo').val(res[0]['verb']);
-          $('#presente').val(res[0]['present']);
           $('#gerundio').val(res[0]['gerund']);
           $('#pasado').val(res[0]['past']);
           $('#participio').val(res[0]['participle']);
@@ -85,7 +84,6 @@
   function actualizar(){
     var idVerbo=$('#idVerbo').val();
     var verb=$('#verbo').val();
-    var presente=$('#presente').val();
     var gerundio=$('#gerundio').val();
     var pasado=$('#pasado').val();
     var participio=$('#participio').val();
@@ -98,7 +96,6 @@
         data:{
               id:idVerbo,
               verb:verb,
-              present:presente,
               gerund:gerundio,
               past:pasado,
               participle:participio,
@@ -156,10 +153,10 @@
     var ruta="{{route('verb.listar')}}";
     $('#tabla').empty();
     $.get(ruta,function(res){
-      tablaDatos.append("<thead><tr><th scope='col'>ID</th><th scope='col'>Verb</th><th scope='col'>Present</th><th scope='col'>Gerund</th><th scope='col'>Past</th><th scope='col'>Participle</th><th scope='col'>Meaning</th><th scope='col'>Accion</th></tr></thead>");
+      tablaDatos.append("<thead><tr><th scope='col'>ID</th><th scope='col'>Verb</th><th scope='col'>Gerund</th><th scope='col'>Past</th><th scope='col'>Participle</th><th scope='col'>Meaning</th><th scope='col'>Accion</th></tr></thead>");
       $(res).each(function(key,value){
-        console.log(value);
-        tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.present+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td>"+value.meaning+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' onclick='modalBorrar(this)' name="+value.verb+" value="+value.id+" ></button></td></tr>");
+        //console.log(value);
+        tablaDatos.append("<tr><td>"+value.id+"</td><td>"+value.verb+"</td><td>"+value.gerund+"</td><td>"+value.past+"</td><td>"+value.participle+"</td><td>"+value.meaning+"</td><td><button  value="+value.id+"  onclick='getDatos(this)' class='btn btn-warning'></button><button class='btn btn-danger' onclick='modalBorrar(this)' name="+value.verb+" value="+value.id+" ></button></td></tr>");
       })
     });
 

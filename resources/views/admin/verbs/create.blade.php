@@ -8,12 +8,6 @@
       {!! Form::label('verb','Verbo') !!}
       {!! Form::text('verb',null,['class'=>'form-control','placeholder'=>'Verbo','required'])!!}
     </div>
-
-    <div class="form-group">
-      {!! Form::label('present','Presente') !!}
-      {!! Form::text('present',null,['class'=>'form-control','placeholder'=>'Presente Tense','required'])!!}
-    </div>
-
     <div class="form-group">
       {!! Form::label('gerund','Gerundio') !!}
       {!! Form::text('gerund',null,['class'=>'form-control','placeholder'=>'Gerund Tense','required'])!!}

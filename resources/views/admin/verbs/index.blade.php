@@ -20,10 +20,6 @@
               {!! Form::text('verb',null,['class'=>'form-control','placeholder'=>'Verb','required','id'=>'verbA'])!!}
             </div>
             <div class="form-group">
-              {!! Form::label('present','Present')!!}
-              {!! Form::text('present',null,['class'=>'form-control','placeholder'=>'Present','required','id'=>'presentA'])!!}
-            </div>
-            <div class="form-group">
               {!! Form::label('gerund','Gerundio')!!}
               {!! Form::text('gerund',null,['class'=>'form-control','placeholder'=>'Gerund','required','id'=>'gerundA'])!!}
             </div>
@@ -76,8 +72,6 @@
                   <input type="hidden" id='idVerbo' />
                   {!! Form::label('Verb', 'Verb:') !!}
                   {!! Form::text('verb', null, ['class' => 'form-control', 'required','id'=>'verbo']) !!}
-                  {!! Form::label('present', 'Present:') !!}
-                  {!! Form::text('present', null, ['class' => 'form-control', 'required','id'=>'presente']) !!}
                   {!! Form::label('gerund', 'Gerund:') !!}
                   {!! Form::text('gerund', null, ['class' => 'form-control', 'required','id'=>'gerundio']) !!}
                   {!! Form::label('past', 'Past:') !!}

@@ -58,7 +58,6 @@ class VerbsController extends Controller
     public function store(Request $request)
     {
         $verb=Verb::where('verb','=',$request->verb)->get();
-        $verbPresent=Verb::where('present','=',$request->present)->get();
         $verbGerund=Verb::where('gerund','=',$request->gerund)->get();
         $verbPast=Verb::where('past','=',$request->past)->get();
         $verbParticiple=Verb::where('participle','=',$request->participle)->get();
@@ -67,10 +66,6 @@ class VerbsController extends Controller
         $existe=false;
         if(count($verb)>0){
           $respuesta.="Verb ".$request->verb." ya existe \n";
-          $existe=true;
-        }
-        if(count($verbPresent)>0){
-          $respuesta.="Verb ".$request->present." ya existe \n";
           $existe=true;
         }
         if(count($verbGerund)>0){
@@ -148,23 +143,17 @@ class VerbsController extends Controller
      {
        $verb=Verb::where('verb','=',$request->verb)
                    ->where('id','!=',$request->id)->get();
-       $verbPresent=Verb::where('present','=',$request->present)
-                         ->where('id','!=',$request->id)->get();
        $verbGerund=Verb::where('gerund','=',$request->gerund)
                          ->where('id','!=',$request->id)->get();
        $verbPast=Verb::where('past','=',$request->past)
                        ->where('id','!=',$request->id)->get();
        $verbParticiple=Verb::where('participle','=',$request->participle)
                            ->where('id','!=',$request->id)->get();
-                           
+
        $respuesta="";
        $existe=false;
        if(count($verb)>0){
          $respuesta.="Verb ".$request->verb." ya existe \n";
-         $existe=true;
-       }
-       if(count($verbPresent)>0){
-         $respuesta.="Verb ".$request->present." ya existe \n";
          $existe=true;
        }
        if(count($verbGerund)>0){
