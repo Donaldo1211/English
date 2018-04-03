@@ -10,7 +10,7 @@
     <div class="card">
       <h5 class="card-header">Verb Test</h5>
       <div class="card-body">
-        <h5 class="card-title">#Vamoadarle:   <button class="btn btn-succes float-right" id='evaluar'>Evaluar</button></h5>
+        <h5 class="card-title">#Vamoadarle:   <button class="btn btn-primary float-right" id='evaluar'>Evaluar</button></h5>
 
         <p class="card-text"></p>
         <div class="form-group">
@@ -43,22 +43,37 @@
 
 @endsection @push('scripts')
 <script type="text/javascript">
+
 $('#evaluar').on('click', function(event) {
+  cont=0;
+  buenas=0;
   $( "td.test" ).each(function( event ) {
+
     us=$(this).text();
     answ=$(this).attr('name');
       console.log('user:'+us+" answ:"+answ);
     if(us==answ){
-      $(this).addClass('correct');
-      $(this).removeClass('wrong');
-      console.log('true');
+      // $(this).addClass('correct');
+      // $(this).removeClass('wrong');
+      // console.log('true');
+      buenas++;
     }else{
-      $(this).addClass('wrong');
-      $(this).removeClass('correct');
+      // $(this).removeClass('wrong');
+      // $(this).removeClass('correct');
+      answ=$(this).attr('name');
+      $(this).text(answ);
+      $(this).css('color', 'rgb(21, 115, 44)');
       console.log('false');
     }
     console.log(answ);
+    cont++;
   });
+  console.log('total:'+cont+" buenas:"+buenas);
+  swal({
+  title: "Completado",
+  text: buenas+" correcta(s) de "+cont+".",
+  imageUrl: '{{asset('/images/completed.png')}}'
+});
 });
 
 
@@ -89,21 +104,21 @@ $('#evaluar').on('click', function(event) {
     default:
   }
   @endforeach
-  // $( "td" ).focusout(function( event ) {
-  //   us=$(this).text();
-  //   answ=$(this).attr('name');
-  //     console.log('user:'+us+" answ:"+answ);
-  //   if(us==answ){
-  //     $(this).addClass('correct');
-  //     $(this).removeClass('wrong');
-  //     console.log('true');
-  //   }else{
-  //     $(this).addClass('wrong');
-  //     $(this).removeClass('correct');
-  //     console.log('false');
-  //   }
-  //   console.log(answ);
-  // });
+  $( "td" ).focusout(function( event ) {
+    us=$(this).text();
+    answ=$(this).attr('name');
+      console.log('user:'+us+" answ:"+answ);
+    if(us==answ){
+      $(this).addClass('correct');
+      $(this).removeClass('wrong');
+      console.log('true');
+    }else{
+      $(this).addClass('wrong');
+      $(this).removeClass('correct');
+      console.log('false');
+    }
+    console.log(answ);
+  });
 
 
 </script>
